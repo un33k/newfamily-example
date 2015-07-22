@@ -1,10 +1,18 @@
 /// <reference path="../../typings/tsd.d.ts" />
 import express = require('express');
+import path = require('path');
+var viewRenderingEngine = require('ejs-mate');
 
 var app : express.Express = express();
 
+app.engine('ejs', viewRenderingEngine);
+app.set('view engine', 'ejs');
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
+	res.render('index');
+});
+
+app.get('/api/coolresource', (req, res) => {
 	res.send({
 		"isApiWorking": true
 	});
@@ -12,6 +20,6 @@ app.get('/api', (req, res) => {
 
 var port: number = process.env.PORT || 3000;
 var server = app.listen(port, () => {
-	var host = server.address().port;
-	console.log(host);
+	var listeningPort: number = server.address().port;
+	console.log('The server is listening on port: ' + listeningPort);
 });
