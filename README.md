@@ -8,7 +8,7 @@ This is a simple workflow example demonstrating how to setup a project that uses
 2. cd into the directory
 3. run `gulp`
 4. run the server with `node built/server/server.js`
-5. The server is listening by default on localhost:3000
+5. The server is listening by default on `http://localhost:3000`
 
 
 
