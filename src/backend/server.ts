@@ -5,16 +5,18 @@ var viewRenderingEngine = require('ejs-mate');
 
 var app : express.Express = express();
 
-app.engine('ejs', viewRenderingEngine);
-app.set('view engine', 'ejs');
+
+app.engine('html', viewRenderingEngine.renderFile);
+app.set('view engine', 'html'); // so you can render('index') 
 
 app.get('/', (req, res) => {
-	res.render('index');
-});
+	res.render('index');  
+}); 
 
 app.get('/api/coolresource', (req, res) => {
 	res.send({
-		"isApiWorking": true
+		"isApiWorking": false,
+		"name": "Maximilian Alexander"
 	});
 });
 
